@@ -1,0 +1,18 @@
+Java program finds the Longest Common Subsequence (LCS) among at most three words in a dictionary that match a given regular expression pattern. The program is case-insensitive and supports regular expressions limited to English letters, the dot symbol ('.'), and the star symbol ('*').
+
+Approach
+----------
+The program uses a Trie data structure to store the dictionary words and find those that match the regular expression. Each word is inserted into the Trie, character by character, starting with the first letter. When the word is complete, a flag isEndOfWord is set to true at the final node.
+
+To search the Trie using the regular expression, a depth-first search algorithm is used. This algorithm takes the regular expression and recursively checks each node in the Trie. The dot symbol ('.') is treated as a wildcard, matching any character. The star symbol ('*') is treated as matching zero or more occurrences of the previous character.
+
+Once the matching words are found, the program calculates the LCS among at most the first three words using dynamic programming. The LCS is computed pair-wise first, and then extended to three strings.
+
+The final LCS is written to an output file named "output.txt".
+
+Complexity
+--------------
+
+Inserting a word into the Trie is O(L), where L is the length of the word. Searching the Trie using the regular expression is O(M), where M is the number of characters in the Trie (sum of the lengths of all words). However, in the worst case (for example, when the regex is very broad), this can be up to O(NM), where N is the number of words in the dictionary.
+
+Computing the LCS of two strings is O(L1 * L2), where L1 and L2 are the lengths of the two strings. For three strings, the complexity is O(L1 * L2 * L3). So, the overall complexity of the program is dependent on the number of words in the dictionary, their lengths, and the complexity of the regular expression.
